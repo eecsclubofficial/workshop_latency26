@@ -73,9 +73,24 @@ And triggers alerts using IR sensor and buzzer.
 
 ## 2. Software Setup (Arduino IDE)
 
-### Step 1: Download Arduino IDE
+### Step 1.1: Download Arduino IDE
 
 Download from: [https://www.arduino.cc/en/software](https://www.arduino.cc/en/software)
+
+### Step 1.2: Install USB-to-Serial Drivers [LINK](https://drive.google.com/drive/folders/1_5TbIT9GiW2gZshUFSvet_-q4AdfdNoO?usp=drive_link)
+--------------------------------------------------
+
+Install BOTH drivers (safe even if only one is used).
+
+1) CH340 / CH340C Driver
+   - Manufacturer: WCH
+   - Install the driver for your operating system
+   - Restart computer if prompted
+
+2) CP2102 Driver
+   - Manufacturer: Silicon Labs
+   - Install the CP210x USB-to-UART driver
+   - Restart computer if prompted
 
 ### Step 2: Install Arduino IDE
 
@@ -86,9 +101,11 @@ Follow the installation steps for your operating system.
 1. Open Arduino IDE
 2. Go to File → Preferences
 3. Add this URL in Additional Boards Manager:
-   [https://dl.espressif.com/dl/package_esp32_index.json](https://dl.espressif.com/dl/package_esp32_index.json)
+   https://espressif.github.io/arduino-esp32/package_esp32_index.json,
+http://arduino.esp8266.com/stable/package_esp8266com_index.json,
+https://raw.githubusercontent.com/espressif/arduino-esp32/gh-pages/package_esp32_index.json
 4. Go to Tools → Board → Boards Manager
-5. Search for ESP32 and install
+5. Search for ESP32 (or esp8266 for node mcu, depending upon your hardware) and install it.
 
 ### Step 4: Select Board and Port
 
@@ -97,9 +114,9 @@ Follow the installation steps for your operating system.
 
 ### Step 5: Install Required Libraries
 
-* LiquidCrystal_I2C
-* DHT Sensor Library
-* Adafruit Unified Sensor
+* LiquidCrystal_I2C (by Martin Kubovčík, Frank de..)
+* DHT Sensor Library (by adafruit)
+* Adafruit Unified Sensor (by adafruit)
 
 Install from: Sketch → Include Library → Manage Libraries
 
@@ -109,7 +126,7 @@ Install from: Sketch → Include Library → Manage Libraries
 
 ### Main Components
 
-* ESP32 / NodeMCU
+* ESP32 / NodeMCU(esp8266)
 * I2C LCD (16x2)
 * DHT11
 * IR Sensor
@@ -224,7 +241,7 @@ Display temperature and humidity on LCD.
 | DHT11 Pin | ESP32 Pin |
 | --------- | --------- |
 | VCC       | 3.3V      |
-| DATA      | GPIO 4    |
+| DATA      | GPIO 5    |
 | GND       | GND       |
 
 ### Steps
@@ -259,8 +276,8 @@ Detect nearby objects and trigger alert.
 
 | Component | ESP32 Pin |
 | --------- | --------- |
-| IR OUT    | GPIO 15   |
-| Buzzer    | GPIO 18   |
+| IR OUT    | GPIO 4    |
+| Buzzer    | GPIO 23   |
 
 ### Steps
 
@@ -271,7 +288,6 @@ Detect nearby objects and trigger alert.
 ### Expected Output
 
 * Message displayed on detection
-* Buzzer activates
 
 ---
 
@@ -291,7 +307,7 @@ Measure soil moisture percentage.
 | Sensor Pin | ESP32 Pin |
 | ---------- | --------- |
 | VCC        | 3.3V      |
-| AO         | GPIO 34   |
+| AO         | GPIO 13   |
 | GND        | GND       |
 
 ### Steps
@@ -303,6 +319,7 @@ Measure soil moisture percentage.
 ### Expected Output
 
 * Moisture percentage on LCD
+* Buzzer activates (when hand is placed on IR sensor)
 
 ### Calibration
 
