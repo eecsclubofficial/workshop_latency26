@@ -100,12 +100,13 @@ Follow the installation steps for your operating system.
 
 1. Open Arduino IDE
 2. Go to File → Preferences
-3. Add this URL in Additional Boards Manager:
-   https://espressif.github.io/arduino-esp32/package_esp32_index.json,
-http://arduino.esp8266.com/stable/package_esp8266com_index.json,
-https://raw.githubusercontent.com/espressif/arduino-esp32/gh-pages/package_esp32_index.json
-4. Go to Tools → Board → Boards Manager
-5. Search for ESP32 (or esp8266 for node mcu, depending upon your hardware) and install it.
+3. Add this snippet in Additional Boards Manager:
+    ```
+   https://dl.espressif.com/dl/package_esp32_index.json,
+   http://arduino.esp8266.com/stable/package_esp8266com_index.json
+   ```
+5. Go to Tools → Board → Boards Manager
+6. Search for ESP32 and install
 
 ### Step 4: Select Board and Port
 
@@ -422,5 +423,6 @@ EECS CLUB
 ### Workshop
 
 EECS IoT Workshop
+
 
 
